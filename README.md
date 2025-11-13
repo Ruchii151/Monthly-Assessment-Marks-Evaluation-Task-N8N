@@ -95,10 +95,28 @@ git clone https://github.com/<Ruchii151>/n8n-monthly-assessment.git
 cd n8n-monthly-assessment
 
 ```
+### 2. Import Workflow into n8n
+
+Open your n8n instance.
+
+Go to Workflows → Import from File.
+
+Select monthly-assessment-eligibility.json.
+
+Review connections and activate.
+
+### 3. Test the Workflow
+
+Execute the workflow.
+
+Submit test responses through the n8n form.
+
+Verify eligibility output
 
 
 # 🪪 Author
 
 Ruchita Patil
 Email: pruchita565@gmail.com
+
 LinkedIn Profile: www.linkedin.com/in/patil-ruchita
