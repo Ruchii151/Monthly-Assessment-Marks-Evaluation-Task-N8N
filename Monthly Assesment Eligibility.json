@@ -1,0 +1,377 @@
+{
+  "name": "Monthly Assesment Eligibility",
+  "nodes": [
+    {
+      "parameters": {
+        "language": "python",
+        "pythonCode": "item = items[0]['json']\nmarks = [\n    float(item['Please enter marks for \"Python\"']),\n    float(item['Please enter marks for \"EDA\"']),\n    float(item['Please enter marks for \"SQL\"']),\n    float(item['Please enter marks for \"PowerBI\"']),\n    float(item['Please enter marks for \"Advance Statistics\"'])\n]\naverage = sum(marks) / len(marks)\nreturn [{ 'json': { 'average': average } }]\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        464,
+        -160
+      ],
+      "id": "435d8c85-d5a2-4884-bae1-fa65c13cea07",
+      "name": "Data Analysis Average Calculation"
+    },
+    {
+      "parameters": {
+        "language": "python",
+        "pythonCode": "item = items[0]['json']\nmarks = [\n    float(item['Please enter marks for \"Machine Learning\"']),\n    float(item['Please enter marks for \"Artificial Neural Network\"']),\n    float(item['Please enter marks for \"Convolutional Neural Network\"']),\n    float(item['Please enter marks for \"Natural Language Processing\"']),\n    float(item['Please enter marks for \"Gen AI\"'])\n]\naverage = sum(marks) / len(marks)\nreturn [{ 'json': { 'average': average } }]\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        464,
+        256
+      ],
+      "id": "ff0ef377-1b1f-490e-a2f1-51f787a3192e",
+      "name": "Data Science Average Calculation"
+    },
+    {
+      "parameters": {
+        "formTitle": "Module Assessment Analysis",
+        "formDescription": "DA / DS Student's Eligibility check for placement drive ",
+        "formFields": {
+          "values": [
+            {
+              "fieldLabel": "Please Enter your name",
+              "placeholder": "for ex. Harry James Potter",
+              "requiredField": true
+            },
+            {
+              "fieldLabel": "Choose your course",
+              "fieldType": "radio",
+              "fieldOptions": {
+                "values": [
+                  {
+                    "option": "Data Analysis"
+                  },
+                  {
+                    "option": "Data Science"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.formTrigger",
+      "typeVersion": 2.3,
+      "position": [
+        -288,
+        32
+      ],
+      "id": "ad30b2fe-dca5-4df3-a1ae-a0c6ff131646",
+      "name": "Eligibility Check for Placement Drive",
+      "webhookId": "fa9f8e9d-b994-4e69-8db0-c20bc8dac68c",
+      "retryOnFail": true,
+      "alwaysOutputData": false,
+      "executeOnce": false
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "ea352063-8b7f-4897-9e9a-7d2e63457048",
+              "leftValue": "={{ $json['Choose your course'] }}",
+              "rightValue": "Data Analysis",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -16,
+        32
+      ],
+      "id": "c31f64e3-b47c-41ef-b4da-fb09dcd4c7a3",
+      "name": "DA or DS Student?"
+    },
+    {
+      "parameters": {
+        "formFields": {
+          "values": [
+            {
+              "fieldLabel": "Please enter marks for \"Python\"",
+              "fieldType": "number",
+              "placeholder": "00",
+              "requiredField": true
+            },
+            {
+              "fieldLabel": "Please enter marks for \"EDA\"",
+              "fieldType": "number",
+              "placeholder": "00",
+              "requiredField": true
+            },
+            {
+              "fieldLabel": "Please enter marks for \"SQL\"",
+              "fieldType": "number",
+              "placeholder": "00",
+              "requiredField": true
+            },
+            {
+              "fieldLabel": "Please enter marks for \"PowerBI\"",
+              "fieldType": "number",
+              "placeholder": "00",
+              "requiredField": true
+            },
+            {
+              "fieldLabel": "Please enter marks for \"Advance Statistics\"",
+              "fieldType": "number",
+              "placeholder": "00",
+              "requiredField": true
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.form",
+      "typeVersion": 2.3,
+      "position": [
+        240,
+        -160
+      ],
+      "id": "31766b41-af15-48fc-9559-024ec61bd0e8",
+      "name": "DA Marks ",
+      "webhookId": "b0b13e5b-c398-4155-82b3-477d39aa89a6"
+    },
+    {
+      "parameters": {
+        "formFields": {
+          "values": [
+            {
+              "fieldLabel": "Please enter marks for \"Machine Learning\"",
+              "fieldType": "number",
+              "placeholder": "00",
+              "requiredField": true
+            },
+            {
+              "fieldLabel": "Please enter marks for \"Artificial Neural Network\"",
+              "fieldType": "number",
+              "placeholder": "00",
+              "requiredField": true
+            },
+            {
+              "fieldLabel": "Please enter marks for \"Convolutional Neural Network\"",
+              "fieldType": "number",
+              "placeholder": "00",
+              "requiredField": true
+            },
+            {
+              "fieldLabel": "Please enter marks for \"Natural Language Processing\"",
+              "fieldType": "number",
+              "placeholder": "00",
+              "requiredField": true
+            },
+            {
+              "fieldLabel": "Please enter marks for \"Gen AI\"",
+              "fieldType": "number",
+              "placeholder": "00",
+              "requiredField": true
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.form",
+      "typeVersion": 2.3,
+      "position": [
+        224,
+        256
+      ],
+      "id": "1b676604-c291-4477-bd68-0b49a720ae2e",
+      "name": "DS Marks",
+      "webhookId": "b0b13e5b-c398-4155-82b3-477d39aa89a6"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "7b5ceecb-656f-432b-a41b-6322f06ec642",
+              "leftValue": "={{ $json.average }}",
+              "rightValue": 70,
+              "operator": {
+                "type": "number",
+                "operation": "gt"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        736,
+        48
+      ],
+      "id": "23303189-80bd-49ae-aad9-432c95202600",
+      "name": "Checking Eligibility"
+    },
+    {
+      "parameters": {
+        "operation": "completion",
+        "completionTitle": "Congratulations !!",
+        "completionMessage": "Yes, you are eligible for upcoming placement drive.",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.form",
+      "typeVersion": 2.3,
+      "position": [
+        1008,
+        -128
+      ],
+      "id": "5ba9a436-cc7b-4bfd-be1b-893cd6e81429",
+      "name": "Eligible",
+      "webhookId": "805b46cc-d4df-4304-93f2-74b96847f4ca"
+    },
+    {
+      "parameters": {
+        "operation": "completion",
+        "completionTitle": "Try Next Time !!",
+        "completionMessage": "Sorry, you are not eligible for upcoming placement drive.",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.form",
+      "typeVersion": 2.3,
+      "position": [
+        992,
+        208
+      ],
+      "id": "8f2cff56-192a-49ae-9b3a-418359c001ea",
+      "name": "Not Eligible",
+      "webhookId": "805b46cc-d4df-4304-93f2-74b96847f4ca"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Eligibility Check for Placement Drive": {
+      "main": [
+        [
+          {
+            "node": "DA or DS Student?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "DA or DS Student?": {
+      "main": [
+        [
+          {
+            "node": "DA Marks ",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "DS Marks",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Data Analysis Average Calculation": {
+      "main": [
+        [
+          {
+            "node": "Checking Eligibility",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Data Science Average Calculation": {
+      "main": [
+        [
+          {
+            "node": "Checking Eligibility",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "DA Marks ": {
+      "main": [
+        [
+          {
+            "node": "Data Analysis Average Calculation",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "DS Marks": {
+      "main": [
+        [
+          {
+            "node": "Data Science Average Calculation",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Checking Eligibility": {
+      "main": [
+        [
+          {
+            "node": "Eligible",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Not Eligible",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "891e1355-4e5e-4a6f-81e8-8f6a449c6592",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "332eceeb2429746e7d90b18fae169306a2f1ce19711eae106ccb4da8c9d55bac"
+  },
+  "id": "oPv3MIe3r7X1BRLA",
+  "tags": []
+}
